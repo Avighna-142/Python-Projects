@@ -1,0 +1,31 @@
+# Expense tracker program
+def expense_tracker():
+    expenses = []
+
+    while True:
+        print("\n1. Add Expense")
+        print("2. View Expenses")
+        print("3. Exit")
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            item = input("Enter the expense description: ")
+            amount = float(input("Enter the expense amount: "))
+            expenses.append({"item": item, "amount": amount})
+            print("Expense added!")
+        elif choice == "2":
+            if expenses:
+                print("\nExpenses:")
+                for i, expense in enumerate(expenses, start=1):
+                    print(f"{i}. {expense['item']}: ${expense['amount']:.2f}")
+                total = sum(expense["amount"] for expense in expenses)
+                print(f"Total: ${total:.2f}")
+            else:
+                print("No expenses recorded.")
+        elif choice == "3":
+            print("Exiting program.")
+            break
+        else:
+            print("Invalid choice!")
+
+expense_tracker()
